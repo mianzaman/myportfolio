@@ -232,6 +232,10 @@
           verify: { projectID: '673619984951479702f9e2c8' },
           url: 'https://general-runtime.voiceflow.com',
           versionID: 'production'
+        }).then(()=>{
+            setTimeout(function (){
+                window.voiceflow.chat.open();
+            },1000)
         });
       }
       v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
