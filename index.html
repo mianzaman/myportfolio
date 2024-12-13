@@ -50,13 +50,14 @@
           idleTime++;
           if (idleTime >= idleLimit) {
             window.voiceflow.chat.open(); // Open chatbot after idle time
-            window.voiceflow.chat.proactive.push({
-              type: 'text',
-              payload: { message: "Hello! How can I assist you today?" }
-            });
+            
             idleTime = 0; // Reset idle time after triggering
           }
         }, 1000);
+          window.voiceflow.chat.proactive.push({
+              type: 'text',
+              payload: { message: "Hello! How can I assist you today?" }
+            });
       });
     };
     v.src = "https://cdn.voiceflow.com/widget/bundle.mjs";
