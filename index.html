@@ -235,7 +235,8 @@
         }).then(()=>{
             setTimeout(function (){
                 window.voiceflow.chat.open();
-            },1000)
+            },10000)
+            window.voiceflow.chat.proactive.push({type:'text',payload:{message:"hy"} });
         });
       }
       v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
