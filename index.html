@@ -11,7 +11,7 @@
 
 <body>
     <h1>Testing Chatbot</h1>
-    <script type="text/javascript">
+<!--     <script type="text/javascript">
   (function(d, t) {
       var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
       v.onload = function() {
@@ -28,7 +28,43 @@
       }
       v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
   })(document, 'script');
+</script> -->
+    <script type="text/javascript">
+  (function(d, t) {
+    var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+    v.onload = function() {
+      window.voiceflow.chat.load({
+        verify: { projectID: '673619984951479702f9e2c8' },
+        url: 'https://general-runtime.voiceflow.com',
+        versionID: 'production'
+      }).then(() => {
+        // Idle Timer
+        let idleTime = 0;
+        const idleLimit = 30; // Idle time in seconds
+
+        const resetIdleTime = () => idleTime = 0;
+        document.addEventListener('mousemove', resetIdleTime);
+        document.addEventListener('keydown', resetIdleTime);
+
+        setInterval(() => {
+          idleTime++;
+          if (idleTime >= idleLimit) {
+            window.voiceflow.chat.open(); // Open chatbot after idle time
+            window.voiceflow.chat.proactive.push({
+              type: 'text',
+              payload: { message: "Hello! How can I assist you today?" }
+            });
+            idleTime = 0; // Reset idle time after triggering
+          }
+        }, 1000);
+      });
+    };
+    v.src = "https://cdn.voiceflow.com/widget/bundle.mjs";
+    v.type = "text/javascript";
+    s.parentNode.insertBefore(v, s);
+  })(document, 'script');
 </script>
+
     <script src="script.js"></script>
 </body>
 
